@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F55830512580DDF600AA787E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830502580DDF600AA787E /* ContentView.swift */; };
+		F55830532580DDF700AA787E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830522580DDF700AA787E /* Assets.xcassets */; };
+		F55830562580DDF700AA787E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830552580DDF700AA787E /* Preview Assets.xcassets */; };
+		F55830612580DE8000AA787E /* MetalPetal in Frameworks */ = {isa = PBXBuildFile; productRef = F55830602580DE8000AA787E /* MetalPetal */; };
+		F558306B2580DEC600AA787E /* StaticImageRenderingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830662580DEC600AA787E /* StaticImageRenderingView.swift */; };
+		F558306D2580DEC600AA787E /* MetalPetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830682580DEC600AA787E /* MetalPetalView.swift */; };
+		F558306E2580DEC600AA787E /* ImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830692580DEC600AA787E /* ImageRenderer.swift */; };
+		F558306F2580DEC600AA787E /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558306A2580DEC600AA787E /* CGImageExtension.swift */; };
+		F55830792580E24700AA787E /* ShaderPreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830782580E24700AA787E /* ShaderPreviewApp.swift */; };
+		F55830842581D34600AA787E /* demo.shader in Resources */ = {isa = PBXBuildFile; fileRef = F55830832581D34600AA787E /* demo.shader */; };
+		F558308A2581D66E00AA787E /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F55830892581D66E00AA787E /* texture.jpg */; };
+		F55830902581D9D600AA787E /* SKQueue in Frameworks */ = {isa = PBXBuildFile; productRef = F558308F2581D9D600AA787E /* SKQueue */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F558304B2580DDF600AA787E /* ShaderPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaderPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F55830502580DDF600AA787E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F55830522580DDF700AA787E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F55830552580DDF700AA787E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F55830572580DDF700AA787E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F55830582580DDF700AA787E /* ShaderPreview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShaderPreview.entitlements; sourceTree = "<group>"; };
+		F55830662580DEC600AA787E /* StaticImageRenderingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageRenderingView.swift; sourceTree = "<group>"; };
+		F55830682580DEC600AA787E /* MetalPetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalPetalView.swift; sourceTree = "<group>"; };
+		F55830692580DEC600AA787E /* ImageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRenderer.swift; sourceTree = "<group>"; };
+		F558306A2580DEC600AA787E /* CGImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageExtension.swift; sourceTree = "<group>"; };
+		F55830782580E24700AA787E /* ShaderPreviewApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaderPreviewApp.swift; sourceTree = "<group>"; };
+		F55830832581D34600AA787E /* demo.shader */ = {isa = PBXFileReference; lastKnownFileType = text; path = demo.shader; sourceTree = "<group>"; };
+		F55830892581D66E00AA787E /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F55830482580DDF600AA787E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F55830902581D9D600AA787E /* SKQueue in Frameworks */,
+				F55830612580DE8000AA787E /* MetalPetal in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F55830422580DDF600AA787E = {
+			isa = PBXGroup;
+			children = (
+				F558304D2580DDF600AA787E /* ShaderPreview */,
+				F558304C2580DDF600AA787E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F558304C2580DDF600AA787E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F558304B2580DDF600AA787E /* ShaderPreview.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F558304D2580DDF600AA787E /* ShaderPreview */ = {
+			isa = PBXGroup;
+			children = (
+				F55830712580DF0200AA787E /* Views */,
+				F55830732580DF2300AA787E /* Renderer */,
+				F558308C2581D67300AA787E /* Resources */,
+				F55830782580E24700AA787E /* ShaderPreviewApp.swift */,
+				F55830522580DDF700AA787E /* Assets.xcassets */,
+				F55830572580DDF700AA787E /* Info.plist */,
+				F55830582580DDF700AA787E /* ShaderPreview.entitlements */,
+				F55830542580DDF700AA787E /* Preview Content */,
+			);
+			path = ShaderPreview;
+			sourceTree = "<group>";
+		};
+		F55830542580DDF700AA787E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F55830552580DDF700AA787E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F55830712580DF0200AA787E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F55830502580DDF600AA787E /* ContentView.swift */,
+				F55830662580DEC600AA787E /* StaticImageRenderingView.swift */,
+				F55830682580DEC600AA787E /* MetalPetalView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F55830732580DF2300AA787E /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				F55830692580DEC600AA787E /* ImageRenderer.swift */,
+				F558306A2580DEC600AA787E /* CGImageExtension.swift */,
+			);
+			path = Renderer;
+			sourceTree = "<group>";
+		};
+		F558308C2581D67300AA787E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F55830832581D34600AA787E /* demo.shader */,
+				F55830892581D66E00AA787E /* texture.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F558304A2580DDF600AA787E /* ShaderPreview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F558305B2580DDF700AA787E /* Build configuration list for PBXNativeTarget "ShaderPreview" */;
+			buildPhases = (
+				F55830472580DDF600AA787E /* Sources */,
+				F55830482580DDF600AA787E /* Frameworks */,
+				F55830492580DDF600AA787E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShaderPreview;
+			packageProductDependencies = (
+				F55830602580DE8000AA787E /* MetalPetal */,
+				F558308F2581D9D600AA787E /* SKQueue */,
+			);
+			productName = ShaderPreview;
+			productReference = F558304B2580DDF600AA787E /* ShaderPreview.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F55830432580DDF600AA787E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					F558304A2580DDF600AA787E = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = F55830462580DDF600AA787E /* Build configuration list for PBXProject "ShaderPreview" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F55830422580DDF600AA787E;
+			packageReferences = (
+				F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */,
+				F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */,
+			);
+			productRefGroup = F558304C2580DDF600AA787E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F558304A2580DDF600AA787E /* ShaderPreview */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F55830492580DDF600AA787E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F55830842581D34600AA787E /* demo.shader in Resources */,
+				F55830562580DDF700AA787E /* Preview Assets.xcassets in Resources */,
+				F55830532580DDF700AA787E /* Assets.xcassets in Resources */,
+				F558308A2581D66E00AA787E /* texture.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F55830472580DDF600AA787E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F558306B2580DEC600AA787E /* StaticImageRenderingView.swift in Sources */,
+				F55830512580DDF600AA787E /* ContentView.swift in Sources */,
+				F558306F2580DEC600AA787E /* CGImageExtension.swift in Sources */,
+				F558306D2580DEC600AA787E /* MetalPetalView.swift in Sources */,
+				F558306E2580DEC600AA787E /* ImageRenderer.swift in Sources */,
+				F55830792580E24700AA787E /* ShaderPreviewApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F55830592580DDF700AA787E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				MTL_HEADER_SEARCH_PATHS = "$(HEADER_SEARCH_PATHS)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F558305A2580DDF700AA787E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				MTL_HEADER_SEARCH_PATHS = "$(HEADER_SEARCH_PATHS)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F558305C2580DDF700AA787E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShaderPreview/ShaderPreview.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"ShaderPreview/Preview Content\"";
+				DEVELOPMENT_TEAM = DDPY9JD4B3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ShaderPreview/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meteor.ShaderPreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F558305D2580DDF700AA787E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShaderPreview/ShaderPreview.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"ShaderPreview/Preview Content\"";
+				DEVELOPMENT_TEAM = DDPY9JD4B3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ShaderPreview/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meteor.ShaderPreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F55830462580DDF600AA787E /* Build configuration list for PBXProject "ShaderPreview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F55830592580DDF700AA787E /* Debug */,
+				F558305A2580DDF700AA787E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F558305B2580DDF700AA787E /* Build configuration list for PBXNativeTarget "ShaderPreview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F558305C2580DDF700AA787E /* Debug */,
+				F558305D2580DDF700AA787E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MetalPetal/MetalPetal.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.14.0;
+			};
+		};
+		F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daniel-pedersen/SKQueue.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F55830602580DE8000AA787E /* MetalPetal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */;
+			productName = MetalPetal;
+		};
+		F558308F2581D9D600AA787E /* SKQueue */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */;
+			productName = SKQueue;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F55830432580DDF600AA787E /* Project object */;
+}

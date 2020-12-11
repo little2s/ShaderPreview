@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MetalPetal",
+        "repositoryURL": "https://github.com/MetalPetal/MetalPetal.git",
+        "state": {
+          "branch": null,
+          "revision": "46f164effda7f0f32429e7e3bfd8ed04067d4c75",
+          "version": "1.14.0"
+        }
+      },
+      {
+        "package": "SKQueue",
+        "repositoryURL": "https://github.com/daniel-pedersen/SKQueue.git",
+        "state": {
+          "branch": null,
+          "revision": "08faecdcd1173d57706e5949dd699183e16f3c39",
+          "version": "1.2.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
