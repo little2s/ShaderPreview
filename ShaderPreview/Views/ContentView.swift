@@ -17,7 +17,14 @@ struct ContentView: View {
                 })
             }.padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 20))
             StaticImageRenderingView(renderer: ImageRenderer())
-        }.frame(width: 800, height: 600)
+        }
+            .frame(minWidth: 0,
+                   idealWidth: 800,
+                   maxWidth: .greatestFiniteMagnitude,
+                   minHeight: 0,
+                   idealHeight: 600,
+                   maxHeight: .greatestFiniteMagnitude
+            )
     }
 }
 
