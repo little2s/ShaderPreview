@@ -9,50 +9,6 @@
 import SwiftUI
 import MetalPetal
 
-#if canImport(UIKit)
-struct MetalPetalView: UIViewRepresentable {
-    
-    var colorPixelFormat: MTLPixelFormat = .bgra8Unorm
-    
-    var clearColor: MTLClearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
-    
-    var resizingMode: MTIDrawableRenderingResizingMode = .aspect
-    
-    let mtiContext: MTIContext
-    
-    @Binding var mtiImage: MTIImage?
-
-    typealias UIViewType = MTIImageView
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator()
-    }
-
-    func makeUIView(context: Context) -> MTIImageView {
-        let imageView = MTIImageView()
-        imageView.colorPixelFormat = colorPixelFormat
-        imageView.clearColor = clearColor
-        imageView.resizingMode = resizingMode
-        imageView.context = mtiContext
-        imageView.image = mtiImage
-        return imageView
-    }
-    
-    func updateUIView(_ uiView: MTIImageView, context: Context) {
-        uiView.colorPixelFormat = colorPixelFormat
-        uiView.clearColor = clearColor
-        uiView.resizingMode = resizingMode
-        uiView.image = mtiImage
-    }
-
-    struct Coordinator {
-        
-    }
-
-}
-#endif
-
-#if canImport(AppKit)
 struct MetalPetalView: NSViewRepresentable {
     
     var colorPixelFormat: MTLPixelFormat = .bgra8Unorm
@@ -65,10 +21,12 @@ struct MetalPetalView: NSViewRepresentable {
     
     @Binding var mtiImage: MTIImage?
     
+    let errorHandler: ((Error?) -> Void)?
+    
     typealias NSViewType = MTKView
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(view: self)
+        return Coordinator(view: self, errorHandler: errorHandler)
     }
 
     func makeNSView(context: Context) -> MTKView {
@@ -84,9 +42,11 @@ struct MetalPetalView: NSViewRepresentable {
     
     class Coordinator: NSObject, MTKViewDelegate {
         let view: MetalPetalView
+        let errorHandler: ((Error?) -> Void)?
         
-        init(view: MetalPetalView) {
+        init(view: MetalPetalView, errorHandler: ((Error?) -> Void)?) {
             self.view = view
+            self.errorHandler = errorHandler
             super.init()
         }
         
@@ -99,11 +59,11 @@ struct MetalPetalView: NSViewRepresentable {
             let request = MTIDrawableRenderingRequest(drawableProvider: view, resizingMode: .aspect)
             do {
                 try self.view.mtiContext.render(image, toDrawableWithRequest: request)
+                self.errorHandler?(nil)
             } catch {
-                print(error)
+                self.errorHandler?(error)
             }
         }
     }
     
 }
-#endif

@@ -45,7 +45,7 @@ class ImageRenderer: ObservableObject {
     class FileMonitor: SKQueueDelegate {
         var pathDidChange: ((String) -> Void)?
         func receivedNotification(_ notification: SKQueueNotification, path: String, queue: SKQueue) {
-            print("note: \(notification.toStrings()), path: \(path)")
+//            print("note: \(notification.toStrings()), path: \(path)")
             DispatchQueue.main.async {
                 self.pathDidChange?(path)
             }
