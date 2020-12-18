@@ -21,6 +21,8 @@ struct MetalPetalView: NSViewRepresentable {
     
     @Binding var mtiImage: MTIImage?
     
+    @Binding var error: Error?
+    
     let errorHandler: ((Error?) -> Void)?
     
     typealias NSViewType = MTKView
@@ -55,7 +57,12 @@ struct MetalPetalView: NSViewRepresentable {
         }
         
         func draw(in view: MTKView) {
-            guard let image = self.view.mtiImage else { return }
+            guard let image = self.view.mtiImage else {
+                if let error = self.view.error {
+                    self.errorHandler?(error)
+                }
+                return
+            }
             let request = MTIDrawableRenderingRequest(drawableProvider: view, resizingMode: .aspect)
             do {
                 try self.view.mtiContext.render(image, toDrawableWithRequest: request)

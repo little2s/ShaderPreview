@@ -50,9 +50,12 @@ struct ContentView: View {
         }
         
         func previewView() -> some View {
-            MetalPetalView(mtiContext: renderer.context, mtiImage: $renderer.image, errorHandler: { error in
-                self.fullText = error?.localizedDescription ?? ""
-            })
+            MetalPetalView(mtiContext: renderer.context,
+                           mtiImage: $renderer.image,
+                           error: $renderer.error,
+                           errorHandler: { error in
+                                self.fullText = error?.localizedDescription ?? ""
+                           })
         }
         
         func bottomBar() -> some View {
@@ -71,6 +74,8 @@ struct ContentView: View {
 
 
                 Spacer()
+                
+                ClockView(clock: renderer.clock)
             }
                 .frame(height: 22)
         }

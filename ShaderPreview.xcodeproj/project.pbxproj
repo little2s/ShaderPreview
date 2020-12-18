@@ -15,9 +15,13 @@
 		F558306E2580DEC600AA787E /* ImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830692580DEC600AA787E /* ImageRenderer.swift */; };
 		F558306F2580DEC600AA787E /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558306A2580DEC600AA787E /* CGImageExtension.swift */; };
 		F55830792580E24700AA787E /* ShaderPreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830782580E24700AA787E /* ShaderPreviewApp.swift */; };
-		F55830842581D34600AA787E /* demo.shader in Resources */ = {isa = PBXBuildFile; fileRef = F55830832581D34600AA787E /* demo.shader */; };
-		F558308A2581D66E00AA787E /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F55830892581D66E00AA787E /* texture.jpg */; };
+		F55830842581D34600AA787E /* play.shader in Resources */ = {isa = PBXBuildFile; fileRef = F55830832581D34600AA787E /* play.shader */; };
+		F558308A2581D66E00AA787E /* texture-0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F55830892581D66E00AA787E /* texture-0.jpg */; };
 		F55830902581D9D600AA787E /* SKQueue in Frameworks */ = {isa = PBXBuildFile; productRef = F558308F2581D9D600AA787E /* SKQueue */; };
+		F585C34C258CB86200051147 /* ResourcesFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C34B258CB86200051147 /* ResourcesFolder.swift */; };
+		F585C34F258CB92700051147 /* FileMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C34E258CB92700051147 /* FileMonitor.swift */; };
+		F585C353258CBAC300051147 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C352258CBAC300051147 /* Clock.swift */; };
+		F585C356258CBE9200051147 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C355258CBE9200051147 /* ClockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +35,12 @@
 		F55830692580DEC600AA787E /* ImageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRenderer.swift; sourceTree = "<group>"; };
 		F558306A2580DEC600AA787E /* CGImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageExtension.swift; sourceTree = "<group>"; };
 		F55830782580E24700AA787E /* ShaderPreviewApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaderPreviewApp.swift; sourceTree = "<group>"; };
-		F55830832581D34600AA787E /* demo.shader */ = {isa = PBXFileReference; lastKnownFileType = text; path = demo.shader; sourceTree = "<group>"; };
-		F55830892581D66E00AA787E /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
+		F55830832581D34600AA787E /* play.shader */ = {isa = PBXFileReference; lastKnownFileType = text; path = play.shader; sourceTree = "<group>"; };
+		F55830892581D66E00AA787E /* texture-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "texture-0.jpg"; sourceTree = "<group>"; };
+		F585C34B258CB86200051147 /* ResourcesFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesFolder.swift; sourceTree = "<group>"; };
+		F585C34E258CB92700051147 /* FileMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMonitor.swift; sourceTree = "<group>"; };
+		F585C352258CBAC300051147 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		F585C355258CBE9200051147 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,7 @@
 			children = (
 				F55830712580DF0200AA787E /* Views */,
 				F55830732580DF2300AA787E /* Renderer */,
+				F585C349258CB6CA00051147 /* Utilities */,
 				F558308C2581D67300AA787E /* Resources */,
 				F55830782580E24700AA787E /* ShaderPreviewApp.swift */,
 				F55830522580DDF700AA787E /* Assets.xcassets */,
@@ -92,6 +101,7 @@
 			children = (
 				F55830502580DDF600AA787E /* ContentView.swift */,
 				F55830682580DEC600AA787E /* MetalPetalView.swift */,
+				F585C355258CBE9200051147 /* ClockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -100,7 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				F55830692580DEC600AA787E /* ImageRenderer.swift */,
-				F558306A2580DEC600AA787E /* CGImageExtension.swift */,
+				F585C34E258CB92700051147 /* FileMonitor.swift */,
+				F585C352258CBAC300051147 /* Clock.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -108,10 +119,19 @@
 		F558308C2581D67300AA787E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F55830832581D34600AA787E /* demo.shader */,
-				F55830892581D66E00AA787E /* texture.jpg */,
+				F585C34B258CB86200051147 /* ResourcesFolder.swift */,
+				F55830832581D34600AA787E /* play.shader */,
+				F55830892581D66E00AA787E /* texture-0.jpg */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F585C349258CB6CA00051147 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F558306A2580DEC600AA787E /* CGImageExtension.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,10 +199,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F55830842581D34600AA787E /* demo.shader in Resources */,
+				F55830842581D34600AA787E /* play.shader in Resources */,
 				F55830562580DDF700AA787E /* Preview Assets.xcassets in Resources */,
 				F55830532580DDF700AA787E /* Assets.xcassets in Resources */,
-				F558308A2581D66E00AA787E /* texture.jpg in Resources */,
+				F558308A2581D66E00AA787E /* texture-0.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,8 +215,12 @@
 			files = (
 				F55830512580DDF600AA787E /* ContentView.swift in Sources */,
 				F558306F2580DEC600AA787E /* CGImageExtension.swift in Sources */,
+				F585C353258CBAC300051147 /* Clock.swift in Sources */,
+				F585C34F258CB92700051147 /* FileMonitor.swift in Sources */,
 				F558306D2580DEC600AA787E /* MetalPetalView.swift in Sources */,
+				F585C34C258CB86200051147 /* ResourcesFolder.swift in Sources */,
 				F558306E2580DEC600AA787E /* ImageRenderer.swift in Sources */,
+				F585C356258CBE9200051147 /* ClockView.swift in Sources */,
 				F55830792580E24700AA787E /* ShaderPreviewApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

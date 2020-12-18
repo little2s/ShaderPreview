@@ -9,125 +9,101 @@
 import SwiftUI
 import Combine
 import MetalPetal
-import SKQueue
-
-struct ResourcesFolder {
-    static let folderURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("com.meteor.shader-preview.resources")
-    
-    static let shaderURL: URL = folderURL.appendingPathComponent("demo.shader")
-    static let textureURL = folderURL.appendingPathComponent("texture.jpg")
-    
-    static func createFolderIfNeeded() throws {
-        if !FileManager.default.fileExists(atPath: folderURL.path) {
-            try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
-        }
-    }
-    
-    static func clear() {
-        DispatchQueue.global(qos: .background).async {
-            try? FileManager.default.removeItem(at: folderURL)
-        }
-    }
-}
 
 class ImageRenderer: ObservableObject {
     
+    struct InstructionError: LocalizedError {
+        private let instruction: String
+        var errorDescription: String? { instruction }
+        init(_ instruction: String) { self.instruction = instruction }
+    }
+    @Published var error: Error?
     @Published var image: MTIImage?
     
     let context = try! MTIContext(device: MTLCreateSystemDefaultDevice()!)
     
-    private var inputImage: MTIImage?
-
+    private var inputImages: [MTIImage] = []
     private var kernel: MTIRenderPipelineKernel?
-    
-    private var libraryURL: URL?
-    
-    class FileMonitor: SKQueueDelegate {
-        var pathDidChange: ((String) -> Void)?
-        func receivedNotification(_ notification: SKQueueNotification, path: String, queue: SKQueue) {
-//            print("note: \(notification.toStrings()), path: \(path)")
-            DispatchQueue.main.async {
-                self.pathDidChange?(path)
-            }
-        }
-    }
-    
+        
     private let fileMonitor = FileMonitor()
-    private var queue: SKQueue?
+    
+    var clock = Clock()
+    private var clockObserver: AnyCancellable?
     
     init() {
-        try? ResourcesFolder.createFolderIfNeeded()
-        
-        try? FileManager.default.copyItem(at: Bundle.main.url(forResource: ResourcesFolder.shaderURL.lastPathComponent, withExtension: nil)!, to: ResourcesFolder.shaderURL)
-        self.reload(shaderURL: ResourcesFolder.shaderURL)
-
-        try? FileManager.default.copyItem(at: Bundle.main.url(forResource: ResourcesFolder.textureURL.lastPathComponent, withExtension: nil)!, to: ResourcesFolder.textureURL)
-        self.replace(inputImage: CGImage.makeImage(data: try! Data(contentsOf: ResourcesFolder.textureURL))!)
-        
-        self.fileMonitor.pathDidChange = { path in
-            if path.hasSuffix(ResourcesFolder.shaderURL.lastPathComponent) {
-                self.reload(fileURL: ResourcesFolder.textureURL) {
-                    self.reload(shaderURL: ResourcesFolder.shaderURL)
-                }
-            } else if path.hasSuffix(ResourcesFolder.textureURL.lastPathComponent) {
-                self.reload(fileURL: ResourcesFolder.textureURL) {
-                    if let data = try? Data(contentsOf: ResourcesFolder.textureURL) {
-                        self.replace(inputImage: CGImage.makeImage(data: data)!)
-                    }
+        ResourcesFolder.prepare()
+        fileMonitor.start { [weak self] in
+            self?.reload()
+        }
+        clockObserver = clock.$timeString.sink { [weak self] _ in
+            self?.render()
+        }
+        reload()
+    }
+    
+    private func reload() {
+        reloadTextures(folderURL: ResourcesFolder.texturesFolderURL, prefix: ResourcesFolder.texturePrefix, extensions: ResourcesFolder.textureExtensions)
+        reloadShader(url: ResourcesFolder.shaderURL)
+        render()
+    }
+    
+    private func reloadTextures(folderURL: URL, prefix: String, extensions: [String]) {
+        func appendTexure(names: [String]) {
+            for name in names {
+                let url = folderURL.appendingPathComponent(name)
+                if FileManager.default.fileExists(atPath: url.path),
+                   let data = try? Data(contentsOf: url),
+                   let cgImage = CGImage.makeImage(data: data) {
+                    let mtiImage = MTIImage(cgImage: cgImage)
+                    inputImages.append(mtiImage)
+                    return
                 }
             }
         }
         
-        let queue = SKQueue(delegate: fileMonitor)
-        queue?.addPath(ResourcesFolder.shaderURL.path)
-        queue?.addPath(ResourcesFolder.textureURL.path)
-        self.queue = queue
-    }
-    
-    private var timerTable: [URL: Timer] = [:]
-    private func reload(fileURL: URL, action: @escaping () -> Void) {
-        if FileManager.default.fileExists(atPath: fileURL.path) {
-            action()
-        } else {
-            func stop() {
-                timerTable[fileURL]?.invalidate()
-                timerTable.removeValue(forKey: fileURL)
-            }
-            stop()
-            let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { (timer) in
-                if FileManager.default.fileExists(atPath: fileURL.path) {
-                    stop()
-                    self.queue?.removePath(fileURL.path)
-                    self.queue?.addPath(fileURL.path)
-                    action()
-                }
-            }
-            timerTable[fileURL] = timer
+        inputImages.removeAll()
+        for i in 0 ..< 10 {
+            let names = extensions.map { prefix + "\(i).\($0)" }
+            appendTexure(names: names)
         }
     }
     
-    private func replace(inputImage: CGImage) {
-        self.inputImage = MTIImage(cgImage: inputImage)
-        self.reload(libraryURL: self.libraryURL)
+    private var textures: Int?
+    private func reloadShader(url: URL) {
+        func getTexturesCount(shaderString: String) -> Int? {
+            guard let line = shaderString.components(separatedBy: "\n").first?.replacingOccurrences(of: "///", with: "") else {
+                return nil
+            }
+            let pairs = line.components(separatedBy: ";")
+            for pair in pairs {
+                let item = pair.components(separatedBy: "=")
+                if item.first == "textures", let s = item.last, let v = Int(s) {
+                    return v
+                }
+            }
+            return nil
+        }
+        
+        guard let shaderString = try? String(contentsOfFile: url.path, encoding: .utf8) else { return }
+        self.textures = getTexturesCount(shaderString: shaderString)
+        let libraryURL = MTILibrarySourceRegistration.shared.registerLibrary(source: shaderString, compileOptions: nil)
+        self.kernel = MTIRenderPipelineKernel(vertexFunctionDescriptor: MTIFunctionDescriptor.passthroughVertex, fragmentFunctionDescriptor: MTIFunctionDescriptor(name: "playFragment", libraryURL: libraryURL))
     }
     
-    private func reload(shaderURL: URL) {
-        let libraryURL = MTILibrarySourceRegistration.shared.registerLibrary(source: try! String(contentsOfFile: shaderURL.path, encoding: .utf8), compileOptions: nil)
-        self.reload(libraryURL: libraryURL)
-    }
-    
-    private func reload(libraryURL: URL?) {
-        self.libraryURL = libraryURL
-        self.kernel = MTIRenderPipelineKernel(vertexFunctionDescriptor: MTIFunctionDescriptor.passthroughVertex, fragmentFunctionDescriptor: MTIFunctionDescriptor(name: "demoFragment", libraryURL: libraryURL))
-        self.apply()
-    }
-    
-    private func apply() {
-        guard let inputImage = self.inputImage else {
+    private func render() {
+        guard let image = self.inputImages.first else {
             self.image = nil
+            self.error = InstructionError("No Textures!")
             return
         }
-        self.image = self.kernel?.apply(toInputImages: [inputImage], parameters: [:], outputDescriptors: [MTIRenderPassOutputDescriptor(dimensions: inputImage.dimensions, pixelFormat: .unspecified)]).first
+        if let count = self.textures {
+            if self.inputImages.count < count {
+                self.image = nil
+                self.error = InstructionError("Textures Inconsistency!")
+                return
+            }
+        }
+        self.image = kernel?.apply(toInputImages: inputImages, parameters: ["time": Float(clock.time)], outputDescriptors: [MTIRenderPassOutputDescriptor(dimensions: image.dimensions, pixelFormat: .unspecified)]).first
     }
     
 }
