@@ -11,7 +11,7 @@ import SwiftUI
 struct ShaderPreviewApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(renderer: ImageRenderer())
         }
     }
 }

@@ -11,7 +11,6 @@
 		F55830532580DDF700AA787E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830522580DDF700AA787E /* Assets.xcassets */; };
 		F55830562580DDF700AA787E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830552580DDF700AA787E /* Preview Assets.xcassets */; };
 		F55830612580DE8000AA787E /* MetalPetal in Frameworks */ = {isa = PBXBuildFile; productRef = F55830602580DE8000AA787E /* MetalPetal */; };
-		F558306B2580DEC600AA787E /* StaticImageRenderingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830662580DEC600AA787E /* StaticImageRenderingView.swift */; };
 		F558306D2580DEC600AA787E /* MetalPetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830682580DEC600AA787E /* MetalPetalView.swift */; };
 		F558306E2580DEC600AA787E /* ImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830692580DEC600AA787E /* ImageRenderer.swift */; };
 		F558306F2580DEC600AA787E /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558306A2580DEC600AA787E /* CGImageExtension.swift */; };
@@ -28,7 +27,6 @@
 		F55830552580DDF700AA787E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F55830572580DDF700AA787E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F55830582580DDF700AA787E /* ShaderPreview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShaderPreview.entitlements; sourceTree = "<group>"; };
-		F55830662580DEC600AA787E /* StaticImageRenderingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageRenderingView.swift; sourceTree = "<group>"; };
 		F55830682580DEC600AA787E /* MetalPetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalPetalView.swift; sourceTree = "<group>"; };
 		F55830692580DEC600AA787E /* ImageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRenderer.swift; sourceTree = "<group>"; };
 		F558306A2580DEC600AA787E /* CGImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageExtension.swift; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				F55830502580DDF600AA787E /* ContentView.swift */,
-				F55830662580DEC600AA787E /* StaticImageRenderingView.swift */,
 				F55830682580DEC600AA787E /* MetalPetalView.swift */,
 			);
 			path = Views;
@@ -196,7 +193,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F558306B2580DEC600AA787E /* StaticImageRenderingView.swift in Sources */,
 				F55830512580DDF600AA787E /* ContentView.swift in Sources */,
 				F558306F2580DEC600AA787E /* CGImageExtension.swift in Sources */,
 				F558306D2580DEC600AA787E /* MetalPetalView.swift in Sources */,
