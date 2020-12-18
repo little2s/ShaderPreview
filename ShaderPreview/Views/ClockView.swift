@@ -21,13 +21,19 @@ struct ClockView: View {
                         .imageScale(.small)
                 }
             })
+                .frame(width: 30)
                 .buttonStyle(PlainButtonStyle())
             
             Text(clock.timeString)
                 .frame(width: 64)
             
-            Text("\(Int(clock.fps)) fps")
+            Button(clock.fpsString, action: {
+                clock.toggleFPS()
+            })
+                .buttonStyle(PlainButtonStyle())
+            
         }
+        .frame(height: 30)
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 20))
     }
 }

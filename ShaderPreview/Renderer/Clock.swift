@@ -10,7 +10,6 @@ import Combine
 
 class Clock: ObservableObject {
     @Published var timeString: String = "0.00"
-    
     private(set) var time: TimeInterval = 0.0 {
         didSet {
             timeString = String(format: "%.2f", time)
@@ -19,7 +18,12 @@ class Clock: ObservableObject {
 
     @Published private(set) var isPlaying = false
     
-    let fps: TimeInterval = 30.0
+    @Published var fpsString: String = "30 fps"
+    private(set) var fps: TimeInterval = 30.0 {
+        didSet {
+            fpsString = "\(Int(fps)) fps"
+        }
+    }
     
     private var timer: Timer?
     
@@ -49,4 +53,14 @@ class Clock: ObservableObject {
         timer = nil
         isPlaying = false
     }
+    
+    func toggleFPS() {
+        pause()
+        if abs(fps - 30) < 1 {
+            fps = 60
+        } else {
+            fps = 30
+        }
+    }
+    
 }
