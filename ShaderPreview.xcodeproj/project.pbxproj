@@ -7,22 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DEE91502F641140BEB9F449 /* Pods_ShaderPreview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7DB73C2C6C0D2689D61846 /* Pods_ShaderPreview.framework */; };
 		F55830512580DDF600AA787E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830502580DDF600AA787E /* ContentView.swift */; };
 		F55830532580DDF700AA787E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830522580DDF700AA787E /* Assets.xcassets */; };
 		F55830562580DDF700AA787E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830552580DDF700AA787E /* Preview Assets.xcassets */; };
-		F55830612580DE8000AA787E /* MetalPetal in Frameworks */ = {isa = PBXBuildFile; productRef = F55830602580DE8000AA787E /* MetalPetal */; };
+		F55830612580DE8000AA787E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = F55830602580DE8000AA787E /* SwiftPackageProductDependency */; };
 		F558306E2580DEC600AA787E /* ImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830692580DEC600AA787E /* ImageRenderer.swift */; };
 		F558306F2580DEC600AA787E /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558306A2580DEC600AA787E /* CGImageExtension.swift */; };
 		F55830792580E24700AA787E /* ShaderPreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830782580E24700AA787E /* ShaderPreviewApp.swift */; };
 		F55830842581D34600AA787E /* play.shader in Resources */ = {isa = PBXBuildFile; fileRef = F55830832581D34600AA787E /* play.shader */; };
 		F558308A2581D66E00AA787E /* texture-0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F55830892581D66E00AA787E /* texture-0.jpg */; };
-		F55830902581D9D600AA787E /* SKQueue in Frameworks */ = {isa = PBXBuildFile; productRef = F558308F2581D9D600AA787E /* SKQueue */; };
+		F55830902581D9D600AA787E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = F558308F2581D9D600AA787E /* SwiftPackageProductDependency */; };
 		F585C34C258CB86200051147 /* ResourcesFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C34B258CB86200051147 /* ResourcesFolder.swift */; };
 		F585C34F258CB92700051147 /* FileMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C34E258CB92700051147 /* FileMonitor.swift */; };
 		F585C353258CBAC300051147 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C352258CBAC300051147 /* Clock.swift */; };
 		F585C356258CBE9200051147 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C355258CBE9200051147 /* ClockView.swift */; };
-		F5ED29ED258DAE8A002C6F09 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5ED29E9258DAE6A002C6F09 /* GPUImage.framework */; };
-		F5ED29EE258DAE8A002C6F09 /* GPUImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5ED29E9258DAE6A002C6F09 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5ED29F3258DB099002C6F09 /* ErrorLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED29F2258DB099002C6F09 /* ErrorLogView.swift */; };
 		F5ED29F5258DB2C5002C6F09 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED29F4258DB2C5002C6F09 /* PreviewView.swift */; };
 		F5ED29F8258DDE11002C6F09 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED29F7258DDE11002C6F09 /* TopBar.swift */; };
@@ -33,16 +32,6 @@
 		F5ED2A0E258DFA8B002C6F09 /* playgl.shader in Resources */ = {isa = PBXBuildFile; fileRef = F5ED2A0D258DFA8B002C6F09 /* playgl.shader */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F5ED29E8258DAE6A002C6F09 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F5ED29E4258DAE6A002C6F09 /* GPUImageMac.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCA3F31C17239B6500E28AEC;
-			remoteInfo = GPUImage;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		F5ED29EF258DAE8A002C6F09 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -50,7 +39,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F5ED29EE258DAE8A002C6F09 /* GPUImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B7DB73C2C6C0D2689D61846 /* Pods_ShaderPreview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShaderPreview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F295DB4434DBD79F2F9248B /* Pods-ShaderPreview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShaderPreview.release.xcconfig"; path = "Target Support Files/Pods-ShaderPreview/Pods-ShaderPreview.release.xcconfig"; sourceTree = "<group>"; };
 		F558304B2580DDF600AA787E /* ShaderPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaderPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55830502580DDF600AA787E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F55830522580DDF700AA787E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,7 +63,6 @@
 		F585C34E258CB92700051147 /* FileMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMonitor.swift; sourceTree = "<group>"; };
 		F585C352258CBAC300051147 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		F585C355258CBE9200051147 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
-		F5ED29E4258DAE6A002C6F09 /* GPUImageMac.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImageMac.xcodeproj; path = "third-party/GPUImage-0.1.7/framework/GPUImageMac.xcodeproj"; sourceTree = "<group>"; };
 		F5ED29F2258DB099002C6F09 /* ErrorLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogView.swift; sourceTree = "<group>"; };
 		F5ED29F4258DB2C5002C6F09 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		F5ED29F7258DDE11002C6F09 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
@@ -82,6 +71,7 @@
 		F5ED29FE258DE6B3002C6F09 /* MetalRenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderEngine.swift; sourceTree = "<group>"; };
 		F5ED2A01258DE6C2002C6F09 /* OpenGLRenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGLRenderEngine.swift; sourceTree = "<group>"; };
 		F5ED2A0D258DFA8B002C6F09 /* playgl.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = playgl.shader; sourceTree = "<group>"; };
+		FBB0F2047D728BEF4C14D1EF /* Pods-ShaderPreview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShaderPreview.debug.xcconfig"; path = "Target Support Files/Pods-ShaderPreview/Pods-ShaderPreview.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,22 +79,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F55830902581D9D600AA787E /* SKQueue in Frameworks */,
-				F55830612580DE8000AA787E /* MetalPetal in Frameworks */,
-				F5ED29ED258DAE8A002C6F09 /* GPUImage.framework in Frameworks */,
+				F55830902581D9D600AA787E /* BuildFile in Frameworks */,
+				F55830612580DE8000AA787E /* BuildFile in Frameworks */,
+				5DEE91502F641140BEB9F449 /* Pods_ShaderPreview.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97702E508B22365B4498E977 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBB0F2047D728BEF4C14D1EF /* Pods-ShaderPreview.debug.xcconfig */,
+				8F295DB4434DBD79F2F9248B /* Pods-ShaderPreview.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F55830422580DDF600AA787E = {
 			isa = PBXGroup;
 			children = (
-				F5ED29E4258DAE6A002C6F09 /* GPUImageMac.xcodeproj */,
 				F558304D2580DDF600AA787E /* ShaderPreview */,
 				F558304C2580DDF600AA787E /* Products */,
 				F5ED29EC258DAE8A002C6F09 /* Frameworks */,
+				97702E508B22365B4498E977 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,17 +185,10 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		F5ED29E5258DAE6A002C6F09 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F5ED29E9258DAE6A002C6F09 /* GPUImage.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F5ED29EC258DAE8A002C6F09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B7DB73C2C6C0D2689D61846 /* Pods_ShaderPreview.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,10 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F558305B2580DDF700AA787E /* Build configuration list for PBXNativeTarget "ShaderPreview" */;
 			buildPhases = (
+				2FB2C43A01542E2849978E4B /* [CP] Check Pods Manifest.lock */,
 				F55830472580DDF600AA787E /* Sources */,
 				F55830482580DDF600AA787E /* Frameworks */,
 				F55830492580DDF600AA787E /* Resources */,
 				F5ED29EF258DAE8A002C6F09 /* Embed Frameworks */,
+				E5111625D2020B2DEB48F44E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,8 +213,8 @@
 			);
 			name = ShaderPreview;
 			packageProductDependencies = (
-				F55830602580DE8000AA787E /* MetalPetal */,
-				F558308F2581D9D600AA787E /* SKQueue */,
+				F55830602580DE8000AA787E /* SwiftPackageProductDependency */,
+				F558308F2581D9D600AA787E /* SwiftPackageProductDependency */,
 			);
 			productName = ShaderPreview;
 			productReference = F558304B2580DDF600AA787E /* ShaderPreview.app */;
@@ -250,33 +245,17 @@
 			);
 			mainGroup = F55830422580DDF600AA787E;
 			packageReferences = (
-				F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */,
-				F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */,
+				F558305F2580DE8000AA787E /* RemoteSwiftPackageReference */,
+				F558308E2581D9D600AA787E /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = F558304C2580DDF600AA787E /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = F5ED29E5258DAE6A002C6F09 /* Products */;
-					ProjectRef = F5ED29E4258DAE6A002C6F09 /* GPUImageMac.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F558304A2580DDF600AA787E /* ShaderPreview */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		F5ED29E9258DAE6A002C6F09 /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = F5ED29E8258DAE6A002C6F09 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F55830492580DDF600AA787E /* Resources */ = {
@@ -292,6 +271,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2FB2C43A01542E2849978E4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShaderPreview-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5111625D2020B2DEB48F44E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShaderPreview/Pods-ShaderPreview-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShaderPreview/Pods-ShaderPreview-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShaderPreview/Pods-ShaderPreview-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F55830472580DDF600AA787E /* Sources */ = {
@@ -438,6 +459,7 @@
 		};
 		F558305C2580DDF700AA787E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBB0F2047D728BEF4C14D1EF /* Pods-ShaderPreview.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -467,6 +489,7 @@
 		};
 		F558305D2580DDF700AA787E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F295DB4434DBD79F2F9248B /* Pods-ShaderPreview.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -517,7 +540,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */ = {
+		F558305F2580DE8000AA787E /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MetalPetal/MetalPetal.git";
 			requirement = {
@@ -525,7 +548,7 @@
 				minimumVersion = 1.14.0;
 			};
 		};
-		F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */ = {
+		F558308E2581D9D600AA787E /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/daniel-pedersen/SKQueue.git";
 			requirement = {
@@ -536,14 +559,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F55830602580DE8000AA787E /* MetalPetal */ = {
+		F55830602580DE8000AA787E /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */;
+			package = F558305F2580DE8000AA787E /* RemoteSwiftPackageReference */;
 			productName = MetalPetal;
 		};
-		F558308F2581D9D600AA787E /* SKQueue */ = {
+		F558308F2581D9D600AA787E /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */;
+			package = F558308E2581D9D600AA787E /* RemoteSwiftPackageReference */;
 			productName = SKQueue;
 		};
 /* End XCSwiftPackageProductDependency section */
