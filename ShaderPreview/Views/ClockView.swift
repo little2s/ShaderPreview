@@ -37,9 +37,3 @@ struct ClockView: View {
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 20))
     }
 }
-
-struct ClockView_Previews: PreviewProvider {
-    static var previews: some View {
-        ClockView(clock: Clock())
-    }
-}

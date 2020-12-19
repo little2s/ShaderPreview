@@ -9,20 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var renderer: ImageRenderer
-
-    @State private var fullText: String = ""
+    @ObservedObject var viewModel: ImageRenderer
     
-    @State private var showsInfoView = false
+    @State private var showsErrorLogView = false
 
     var body: some View {
         Group {
-            if showsInfoView {
+            if showsErrorLogView {
                 ZStack {
                     mainView()
                     VStack {
                         Spacer()
-                        infoView()
+                        ErrorLogView(text: $viewModel.errorLog, cancelHandler: {
+                            showsErrorLogView = false
+                        })
                     }
                 }
             } else {
@@ -33,92 +33,15 @@ struct ContentView: View {
     }
     
     private func mainView() -> some View {
-        func topBar() -> some View {
-            HStack() {
-                Spacer()
-                Button(action: {
-                    NSWorkspace.shared.open(ResourcesFolder.folderURL)
-                }, label: {
-                    Image(systemName: "folder")
-                        .imageScale(.large)
-                })
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            }
-                .frame(height: 30)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-        }
-        
-        func previewView() -> some View {
-            MetalPetalView(mtiContext: renderer.context,
-                           mtiImage: $renderer.image,
-                           error: $renderer.error,
-                           errorHandler: { error in
-                                self.fullText = error?.localizedDescription ?? ""
-                           })
-        }
-        
-        func bottomBar() -> some View {
-            HStack {
-                Button(action: {
-                    showsInfoView = true
-                }, label: {
-                    HStack {
-                        Image(systemName: "exclamationmark.triangle")
-                            .imageScale(.small)
-                        Text(fullText.isEmpty ? "0" : fullText.replacingOccurrences(of: "\n", with: ""))
-                    }
-                })
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 3, trailing: 20))
-
-
-                Spacer()
-                
-                ClockView(clock: renderer.clock)
-            }
-                .frame(height: 22)
-        }
-        
-        return VStack(spacing: 0) {
-            topBar()
-            previewView()
-            bottomBar()
+        VStack(spacing: 0) {
+            TopBar(engineName: $viewModel.engineName, engineActionHandler: {
+                viewModel.toggleEngine()
+            })
+            PreviewView(nsImage: $viewModel.image)
+            BottomBar(clock: $viewModel.clock, errorDescription: $viewModel.errorDescription, errorActionHandler: {
+                showsErrorLogView = true
+            })
         }
     }
     
-    
-    private func infoView() -> some View {
-        func topBar() -> some View {
-            HStack() {
-                Spacer()
-                Button(action: {
-                    showsInfoView = false
-                }, label: {
-                    Image(systemName: "xmark")
-                        .imageScale(.medium)
-                })
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            }
-                .frame(height: 30)
-        }
-        
-        return VStack {
-            Rectangle()
-                .fill(Color(NSColor.windowBackgroundColor))
-                .frame(height: 1)
-            topBar()
-            TextEditor(text: $fullText)
-                .frame(height: 186)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-        }
-            .background(Color(NSColor.controlBackgroundColor))
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(renderer: ImageRenderer())
-    }
 }

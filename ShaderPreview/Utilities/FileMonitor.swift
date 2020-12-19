@@ -22,27 +22,30 @@ class FileMonitor {
     private var kqueue: SKQueue?
     private let delegate = Delegate()
     
-    func start(changeHandler: @escaping () -> Void) {
-        self.delegate.pathDidChange = { [weak self] path in
-            if path.hasSuffix(ResourcesFolder.shaderURL.lastPathComponent) {
-                self?.reload(fileURL: ResourcesFolder.shaderURL) {
-                    changeHandler()
-                }
-            } else if path.hasSuffix(ResourcesFolder.texturesFolderURL.lastPathComponent) {
-                self?.reload(fileURL: ResourcesFolder.texturesFolderURL) {
-                    changeHandler()
+    private var observingURLs: [URL] = []
+    
+    func start(URLs: [URL], changeHandler: @escaping () -> Void) {
+        stop()
+        observingURLs = URLs
+        
+        delegate.pathDidChange = { [weak self] path in
+            guard let strongSelf = self else { return }
+            strongSelf.observingURLs.forEach {
+                if path.hasSuffix($0.lastPathComponent) {
+                    strongSelf.reload(fileURL: $0, action: changeHandler)
                 }
             }
         }
         let queue = SKQueue(delegate: delegate)
-        queue?.addPath(ResourcesFolder.shaderURL.path)
-        queue?.addPath(ResourcesFolder.texturesFolderURL.path)
+        URLs.forEach { queue?.addPath($0.path) }
         self.kqueue = queue
     }
     
     func stop() {
-        kqueue?.removePath(ResourcesFolder.shaderURL.path)
-        kqueue?.removePath(ResourcesFolder.texturesFolderURL.path)
+        observingURLs.forEach { kqueue?.removePath($0.path) }
+        observingURLs.removeAll()
+        timerTable.forEach { $0.value.invalidate() }
+        timerTable.removeAll()
     }
     
     private var timerTable: [URL: Timer] = [:]

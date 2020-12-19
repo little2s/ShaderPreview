@@ -16,7 +16,7 @@ class Clock: ObservableObject {
         }
     }
 
-    @Published private(set) var isPlaying = false
+    @Published var isPlaying = false
     
     @Published var fpsString: String = "30 fps"
     private(set) var fps: TimeInterval = 30.0 {

@@ -10,43 +10,80 @@ import SwiftUI
 import Combine
 import MetalPetal
 
+protocol RenderEngine: class {
+    var name: String { get }
+    var shaderURL: URL { get }
+    
+    func reloadShader()
+    func render(textures: [CGImage], time: TimeInterval) throws -> CGImage
+}
+
 class ImageRenderer: ObservableObject {
     
-    struct InstructionError: LocalizedError {
-        private let instruction: String
-        var errorDescription: String? { instruction }
-        init(_ instruction: String) { self.instruction = instruction }
+    @Published var engineName: String = ""
+    private(set) var engine: RenderEngine {
+        didSet {
+            engineName = engine.name
+            clock.pause()
+            resetFileMonitor()
+            reload()
+        }
     }
-    @Published var error: Error?
-    @Published var image: MTIImage?
     
-    let context = try! MTIContext(device: MTLCreateSystemDefaultDevice()!)
+    @Published var errorDescription: String = ""
+    @Published var errorLog: String = ""
+    private(set) var error: Error? {
+        didSet {
+            errorLog = error?.localizedDescription ?? ""
+            errorDescription = errorLog.isEmpty ? "0" : errorLog.replacingOccurrences(of: "\n", with: "")
+            if error != nil {
+                clock.pause()
+            }
+        }
+    }
     
-    private var inputImages: [MTIImage] = []
-    private var kernel: MTIRenderPipelineKernel?
-        
+    @Published var image: NSImage?
+                
     private let fileMonitor = FileMonitor()
     
     var clock = Clock()
     private var clockObserver: AnyCancellable?
     
     init() {
+        self.engine = MetalRenderEngine()
+        self.engineName = engine.name
+        
         ResourcesFolder.prepare()
-        fileMonitor.start { [weak self] in
-            self?.reload()
-        }
+        
         clockObserver = clock.$timeString.sink { [weak self] _ in
             self?.render()
         }
+        
+        resetFileMonitor()
         reload()
+    }
+    
+    func toggleEngine() {
+        if engine is MetalRenderEngine {
+            engine = OpenGLRenderEngine()
+        } else {
+            engine = MetalRenderEngine()
+        }
+    }
+    
+    private func resetFileMonitor() {
+        fileMonitor.start(URLs: [engine.shaderURL, ResourcesFolder.texturesFolderURL]) { [weak self] in
+            self?.reload()
+        }
     }
     
     private func reload() {
         reloadTextures(folderURL: ResourcesFolder.texturesFolderURL, prefix: ResourcesFolder.texturePrefix, extensions: ResourcesFolder.textureExtensions)
-        reloadShader(url: ResourcesFolder.shaderURL)
+        engine.reloadShader()
         render()
     }
     
+    private var textures: [CGImage] = []
     private func reloadTextures(folderURL: URL, prefix: String, extensions: [String]) {
         func appendTexure(names: [String]) {
             for name in names {
@@ -54,56 +91,27 @@ class ImageRenderer: ObservableObject {
                 if FileManager.default.fileExists(atPath: url.path),
                    let data = try? Data(contentsOf: url),
                    let cgImage = CGImage.makeImage(data: data) {
-                    let mtiImage = MTIImage(cgImage: cgImage)
-                    inputImages.append(mtiImage)
+                    textures.append(cgImage)
                     return
                 }
             }
         }
         
-        inputImages.removeAll()
+        textures.removeAll()
         for i in 0 ..< 10 {
             let names = extensions.map { prefix + "\(i).\($0)" }
             appendTexure(names: names)
         }
     }
     
-    private var textures: Int?
-    private func reloadShader(url: URL) {
-        func getTexturesCount(shaderString: String) -> Int? {
-            guard let line = shaderString.components(separatedBy: "\n").first?.replacingOccurrences(of: "///", with: "") else {
-                return nil
-            }
-            let pairs = line.components(separatedBy: ";")
-            for pair in pairs {
-                let item = pair.components(separatedBy: "=")
-                if item.first == "textures", let s = item.last, let v = Int(s) {
-                    return v
-                }
-            }
-            return nil
-        }
-        
-        guard let shaderString = try? String(contentsOfFile: url.path, encoding: .utf8) else { return }
-        self.textures = getTexturesCount(shaderString: shaderString)
-        let libraryURL = MTILibrarySourceRegistration.shared.registerLibrary(source: shaderString, compileOptions: nil)
-        self.kernel = MTIRenderPipelineKernel(vertexFunctionDescriptor: MTIFunctionDescriptor.passthroughVertex, fragmentFunctionDescriptor: MTIFunctionDescriptor(name: "playFragment", libraryURL: libraryURL))
-    }
-    
     private func render() {
-        guard let image = self.inputImages.first else {
-            self.image = nil
-            self.error = InstructionError("No Textures!")
-            return
+        do {
+            let cgImage = try engine.render(textures: textures, time: clock.time)
+            self.image = NSImage(cgImage: cgImage, size: NSSize(width: cgImage.width, height: cgImage.height))
+            self.error = nil
+        } catch {
+            self.error = error
         }
-        if let count = self.textures {
-            if self.inputImages.count < count {
-                self.image = nil
-                self.error = InstructionError("Textures Inconsistency!")
-                return
-            }
-        }
-        self.image = kernel?.apply(toInputImages: inputImages, parameters: ["time": Float(clock.time)], outputDescriptors: [MTIRenderPassOutputDescriptor(dimensions: image.dimensions, pixelFormat: .unspecified)]).first
     }
     
 }

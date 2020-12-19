@@ -11,6 +11,7 @@ struct ResourcesFolder {
     static let folderURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("com.meteor.shader-preview.resources")
     
     static let shaderURL = folderURL.appendingPathComponent("play.shader")
+    static let glShaderURL = folderURL.appendingPathComponent("playgl.shader")
     
     static let texturesFolderURL = folderURL.appendingPathComponent("textures")
     static let texturePrefix = "texture-"
