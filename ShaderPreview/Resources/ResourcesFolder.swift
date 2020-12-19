@@ -22,6 +22,9 @@ struct ResourcesFolder {
         if !FileManager.default.fileExists(atPath: shaderURL.path) {
             try? FileManager.default.copyItem(at: Bundle.main.url(forResource: shaderURL.lastPathComponent, withExtension: nil)!, to: shaderURL)
         }
+        if !FileManager.default.fileExists(atPath: glShaderURL.path) {
+            try? FileManager.default.copyItem(at: Bundle.main.url(forResource: glShaderURL.lastPathComponent, withExtension: nil)!, to: glShaderURL)
+        }
         let placeholderTextureName = "texture-0.jpg"
         if !FileManager.default.fileExists(atPath: texturesFolderURL.appendingPathComponent(placeholderTextureName).path) {
             try? FileManager.default.copyItem(at: Bundle.main.url(forResource: placeholderTextureName, withExtension: nil)!, to: texturesFolderURL.appendingPathComponent(placeholderTextureName))

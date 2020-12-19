@@ -161,6 +161,12 @@ typedef void (*GLLogFunction) (GLuint program, GLsizei bufsize, GLsizei* length,
 {
     return glGetUniformLocation(program, [uniformName UTF8String]);
 }
+
+- (GLint)iUniformIndex:(NSString *)uniformName
+{
+    return glGetUniformLocation(program, [uniformName UTF8String]);
+}
+
 // END:indexmethods
 #pragma mark -
 // START:link

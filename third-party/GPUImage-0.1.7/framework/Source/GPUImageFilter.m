@@ -750,4 +750,9 @@ NSString *const kGPUImagePassthroughFragmentShaderString = SHADER_STRING
 #pragma mark -
 #pragma mark Accessors
 
+- (GLProgram *)shaderProgram
+{
+    return filterProgram;
+}
+
 @end

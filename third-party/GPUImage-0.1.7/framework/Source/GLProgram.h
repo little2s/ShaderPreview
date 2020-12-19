@@ -39,4 +39,7 @@
 - (BOOL)link;
 - (void)use;
 - (void)validate;
+
+- (GLint)iUniformIndex:(NSString *)uniformName;
+
 @end

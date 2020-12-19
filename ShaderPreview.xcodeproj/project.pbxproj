@@ -30,6 +30,7 @@
 		F5ED29FC258DE1DE002C6F09 /* InstructionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED29FB258DE1DE002C6F09 /* InstructionError.swift */; };
 		F5ED29FF258DE6B3002C6F09 /* MetalRenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED29FE258DE6B3002C6F09 /* MetalRenderEngine.swift */; };
 		F5ED2A02258DE6C2002C6F09 /* OpenGLRenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ED2A01258DE6C2002C6F09 /* OpenGLRenderEngine.swift */; };
+		F5ED2A0E258DFA8B002C6F09 /* playgl.shader in Resources */ = {isa = PBXBuildFile; fileRef = F5ED2A0D258DFA8B002C6F09 /* playgl.shader */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		F5ED29FB258DE1DE002C6F09 /* InstructionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionError.swift; sourceTree = "<group>"; };
 		F5ED29FE258DE6B3002C6F09 /* MetalRenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderEngine.swift; sourceTree = "<group>"; };
 		F5ED2A01258DE6C2002C6F09 /* OpenGLRenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGLRenderEngine.swift; sourceTree = "<group>"; };
+		F5ED2A0D258DFA8B002C6F09 /* playgl.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = playgl.shader; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				F585C34B258CB86200051147 /* ResourcesFolder.swift */,
 				F55830832581D34600AA787E /* play.shader */,
+				F5ED2A0D258DFA8B002C6F09 /* playgl.shader */,
 				F55830892581D66E00AA787E /* texture-0.jpg */,
 			);
 			path = Resources;
@@ -233,6 +236,7 @@
 				TargetAttributes = {
 					F558304A2580DDF600AA787E = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -280,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F55830842581D34600AA787E /* play.shader in Resources */,
+				F5ED2A0E258DFA8B002C6F09 /* playgl.shader in Resources */,
 				F55830562580DDF700AA787E /* Preview Assets.xcassets in Resources */,
 				F55830532580DDF700AA787E /* Assets.xcassets in Resources */,
 				F558308A2581D66E00AA787E /* texture-0.jpg in Resources */,
@@ -436,6 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ShaderPreview/ShaderPreview.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -453,6 +459,8 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meteor.ShaderPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -462,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ShaderPreview/ShaderPreview.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -479,6 +488,7 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meteor.ShaderPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
