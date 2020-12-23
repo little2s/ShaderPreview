@@ -70,9 +70,12 @@ class OpenGLRenderEngine: RenderEngine {
         filter.useNextFrameForImageCapture()
         inputImages.forEach { $0.processImage() }
         
-        guard let outputImage = filter.imageFromCurrentFramebuffer()?.cgImage else {
+        guard let outputImage = filter.newCGImageFromCurrentlyProcessedOutput()?.takeRetainedValue() else {
             throw InstructionError("Failed to get image!")
         }
+        
+        let _ = inputImages//keep capture images
+        
         return outputImage
     }
     
