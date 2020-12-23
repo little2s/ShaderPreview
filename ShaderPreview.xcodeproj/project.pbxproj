@@ -11,13 +11,13 @@
 		F55830512580DDF600AA787E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830502580DDF600AA787E /* ContentView.swift */; };
 		F55830532580DDF700AA787E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830522580DDF700AA787E /* Assets.xcassets */; };
 		F55830562580DDF700AA787E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830552580DDF700AA787E /* Preview Assets.xcassets */; };
-		F55830612580DE8000AA787E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = F55830602580DE8000AA787E /* SwiftPackageProductDependency */; };
+		F55830612580DE8000AA787E /* MetalPetal in Frameworks */ = {isa = PBXBuildFile; productRef = F55830602580DE8000AA787E /* MetalPetal */; };
 		F558306E2580DEC600AA787E /* ImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830692580DEC600AA787E /* ImageRenderer.swift */; };
 		F558306F2580DEC600AA787E /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558306A2580DEC600AA787E /* CGImageExtension.swift */; };
 		F55830792580E24700AA787E /* ShaderPreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830782580E24700AA787E /* ShaderPreviewApp.swift */; };
 		F55830842581D34600AA787E /* play.shader in Resources */ = {isa = PBXBuildFile; fileRef = F55830832581D34600AA787E /* play.shader */; };
 		F558308A2581D66E00AA787E /* texture-0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F55830892581D66E00AA787E /* texture-0.jpg */; };
-		F55830902581D9D600AA787E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = F558308F2581D9D600AA787E /* SwiftPackageProductDependency */; };
+		F55830902581D9D600AA787E /* SKQueue in Frameworks */ = {isa = PBXBuildFile; productRef = F558308F2581D9D600AA787E /* SKQueue */; };
 		F585C34C258CB86200051147 /* ResourcesFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C34B258CB86200051147 /* ResourcesFolder.swift */; };
 		F585C34F258CB92700051147 /* FileMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C34E258CB92700051147 /* FileMonitor.swift */; };
 		F585C353258CBAC300051147 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585C352258CBAC300051147 /* Clock.swift */; };
@@ -79,8 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F55830902581D9D600AA787E /* BuildFile in Frameworks */,
-				F55830612580DE8000AA787E /* BuildFile in Frameworks */,
+				F55830902581D9D600AA787E /* SKQueue in Frameworks */,
+				F55830612580DE8000AA787E /* MetalPetal in Frameworks */,
 				5DEE91502F641140BEB9F449 /* Pods_ShaderPreview.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,7 +94,6 @@
 				FBB0F2047D728BEF4C14D1EF /* Pods-ShaderPreview.debug.xcconfig */,
 				8F295DB4434DBD79F2F9248B /* Pods-ShaderPreview.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -213,8 +212,8 @@
 			);
 			name = ShaderPreview;
 			packageProductDependencies = (
-				F55830602580DE8000AA787E /* SwiftPackageProductDependency */,
-				F558308F2581D9D600AA787E /* SwiftPackageProductDependency */,
+				F55830602580DE8000AA787E /* MetalPetal */,
+				F558308F2581D9D600AA787E /* SKQueue */,
 			);
 			productName = ShaderPreview;
 			productReference = F558304B2580DDF600AA787E /* ShaderPreview.app */;
@@ -245,8 +244,8 @@
 			);
 			mainGroup = F55830422580DDF600AA787E;
 			packageReferences = (
-				F558305F2580DE8000AA787E /* RemoteSwiftPackageReference */,
-				F558308E2581D9D600AA787E /* RemoteSwiftPackageReference */,
+				F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */,
+				F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */,
 			);
 			productRefGroup = F558304C2580DDF600AA787E /* Products */;
 			projectDirPath = "";
@@ -467,7 +466,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShaderPreview/ShaderPreview.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"ShaderPreview/Preview Content\"";
 				DEVELOPMENT_TEAM = DDPY9JD4B3;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -497,7 +496,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShaderPreview/ShaderPreview.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"ShaderPreview/Preview Content\"";
 				DEVELOPMENT_TEAM = DDPY9JD4B3;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -540,7 +539,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F558305F2580DE8000AA787E /* RemoteSwiftPackageReference */ = {
+		F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MetalPetal/MetalPetal.git";
 			requirement = {
@@ -548,7 +547,7 @@
 				minimumVersion = 1.14.0;
 			};
 		};
-		F558308E2581D9D600AA787E /* RemoteSwiftPackageReference */ = {
+		F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/daniel-pedersen/SKQueue.git";
 			requirement = {
@@ -559,14 +558,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F55830602580DE8000AA787E /* SwiftPackageProductDependency */ = {
+		F55830602580DE8000AA787E /* MetalPetal */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F558305F2580DE8000AA787E /* RemoteSwiftPackageReference */;
+			package = F558305F2580DE8000AA787E /* XCRemoteSwiftPackageReference "MetalPetal" */;
 			productName = MetalPetal;
 		};
-		F558308F2581D9D600AA787E /* SwiftPackageProductDependency */ = {
+		F558308F2581D9D600AA787E /* SKQueue */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F558308E2581D9D600AA787E /* RemoteSwiftPackageReference */;
+			package = F558308E2581D9D600AA787E /* XCRemoteSwiftPackageReference "SKQueue" */;
 			productName = SKQueue;
 		};
 /* End XCSwiftPackageProductDependency section */
