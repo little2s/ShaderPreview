@@ -37,7 +37,9 @@ struct ContentView: View {
             TopBar(engineName: $viewModel.engineName, engineActionHandler: {
                 viewModel.toggleEngine()
             })
+            Spacer()
             PreviewView(nsImage: $viewModel.image)
+            Spacer()
             BottomBar(clock: $viewModel.clock, errorDescription: $viewModel.errorDescription, errorActionHandler: {
                 showsErrorLogView = true
             })
