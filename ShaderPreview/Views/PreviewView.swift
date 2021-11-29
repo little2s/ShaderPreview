@@ -19,5 +19,6 @@ struct PreviewView: View {
                     .aspectRatio(contentMode: .fit)
             }
         }
+        .frame(minWidth: 100)
     }
 }

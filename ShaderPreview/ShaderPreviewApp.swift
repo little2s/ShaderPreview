@@ -15,6 +15,13 @@ struct ShaderPreviewApp: App {
         WindowGroup {
             ContentView(viewModel: ImageRenderer())
         }
+        .commands {
+            CommandGroup(after: .saveItem) {
+                Button("Save") {
+                    NotificationCenter.default.post(name: Notification.Name("ShaderPreview.Save"), object: nil)
+                }.keyboardShortcut("s")
+            }
+        }
     }
 }
 

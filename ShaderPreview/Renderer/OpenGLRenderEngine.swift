@@ -16,8 +16,8 @@ class OpenGLRenderEngine: RenderEngine {
     private let vertexShaderString = "attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n\nvarying vec2 textureCoordinate;\n\nvoid main()\n{\n\tgl_Position = position;\n\ttextureCoordinate = inputTextureCoordinate.xy;\n}\n"
     private var fragmentShaderString: String?
     private var complieLog: String?
-    func reloadShader() {
-        guard let shaderString = try? String(contentsOfFile: shaderURL.path, encoding: .utf8) else { return }
+    func reloadShader() throws -> String {
+        let shaderString = try String(contentsOfFile: shaderURL.path, encoding: .utf8)
         var compilationFailed = false
         runSynchronouslyOnVideoProcessingQueue {
             GPUImageContext.useImageProcessingContext()
@@ -32,11 +32,8 @@ class OpenGLRenderEngine: RenderEngine {
                 compilationFailed = true
             }
         }
-        if compilationFailed {
-            self.fragmentShaderString = nil
-            return
-        }
-        self.fragmentShaderString = shaderString
+        self.fragmentShaderString = compilationFailed ? nil : shaderString
+        return shaderString
     }
     
     func render(textures: [CGImage], time: TimeInterval) throws -> CGImage {

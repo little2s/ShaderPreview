@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5DEE91502F641140BEB9F449 /* Pods_ShaderPreview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7DB73C2C6C0D2689D61846 /* Pods_ShaderPreview.framework */; };
+		E0E82ADF2754D97D000A54B9 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E82ADE2754D97D000A54B9 /* EditorView.swift */; };
 		F55830512580DDF600AA787E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55830502580DDF600AA787E /* ContentView.swift */; };
 		F55830532580DDF700AA787E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830522580DDF700AA787E /* Assets.xcassets */; };
 		F55830562580DDF700AA787E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55830552580DDF700AA787E /* Preview Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		0B7DB73C2C6C0D2689D61846 /* Pods_ShaderPreview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShaderPreview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F295DB4434DBD79F2F9248B /* Pods-ShaderPreview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShaderPreview.release.xcconfig"; path = "Target Support Files/Pods-ShaderPreview/Pods-ShaderPreview.release.xcconfig"; sourceTree = "<group>"; };
+		E0E82ADE2754D97D000A54B9 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		F558304B2580DDF600AA787E /* ShaderPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaderPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55830502580DDF600AA787E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F55830522580DDF700AA787E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				F55830502580DDF600AA787E /* ContentView.swift */,
+				E0E82ADE2754D97D000A54B9 /* EditorView.swift */,
 				F5ED29F4258DB2C5002C6F09 /* PreviewView.swift */,
 				F5ED29F7258DDE11002C6F09 /* TopBar.swift */,
 				F5ED29F9258DDE67002C6F09 /* BottomBar.swift */,
@@ -331,6 +334,7 @@
 				F5ED29FA258DDE67002C6F09 /* BottomBar.swift in Sources */,
 				F585C356258CBE9200051147 /* ClockView.swift in Sources */,
 				F5ED29F3258DB099002C6F09 /* ErrorLogView.swift in Sources */,
+				E0E82ADF2754D97D000A54B9 /* EditorView.swift in Sources */,
 				F5ED2A02258DE6C2002C6F09 /* OpenGLRenderEngine.swift in Sources */,
 				F55830792580E24700AA787E /* ShaderPreviewApp.swift in Sources */,
 			);
@@ -468,7 +472,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"ShaderPreview/Preview Content\"";
-				DEVELOPMENT_TEAM = DDPY9JD4B3;
+				DEVELOPMENT_TEAM = Y74B477B4P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShaderPreview/Info.plist;
@@ -498,7 +502,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"ShaderPreview/Preview Content\"";
-				DEVELOPMENT_TEAM = DDPY9JD4B3;
+				DEVELOPMENT_TEAM = Y74B477B4P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShaderPreview/Info.plist;

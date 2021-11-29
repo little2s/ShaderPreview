@@ -10,11 +10,11 @@ import SwiftUI
 import Combine
 import MetalPetal
 
-protocol RenderEngine: class {
+protocol RenderEngine: AnyObject {
     var name: String { get }
     var shaderURL: URL { get }
     
-    func reloadShader()
+    func reloadShader() throws -> String
     func render(textures: [CGImage], time: TimeInterval) throws -> CGImage
 }
 
@@ -24,7 +24,7 @@ class ImageRenderer: ObservableObject {
     private(set) var engine: RenderEngine {
         didSet {
             engineName = engine.name
-            clock.pause()
+            clock.reset()
             resetFileMonitor()
             reload()
         }
@@ -43,11 +43,14 @@ class ImageRenderer: ObservableObject {
     }
     
     @Published var image: NSImage?
+    private var textures: [CGImage] = []
+    
+    @Published var code: String = ""
                 
     private let fileMonitor = FileMonitor()
     
     var clock = Clock()
-    private var clockObserver: AnyCancellable?
+    private var observers: [AnyCancellable] = []
     
     init() {
         self.engine = MetalRenderEngine()
@@ -55,9 +58,15 @@ class ImageRenderer: ObservableObject {
         
         ResourcesFolder.prepare()
         
-        clockObserver = clock.$timeString.sink { [weak self] _ in
+        clock.$timeString.sink { [weak self] _ in
             self?.render()
-        }
+        }.store(in: &observers)
+        
+        NotificationCenter.default
+            .publisher(for: Notification.Name("ShaderPreview.Save"), object: nil)
+            .sink { [weak self] _ in
+                self?.saveCode()
+            }.store(in: &observers)
         
         resetFileMonitor()
         reload()
@@ -79,11 +88,12 @@ class ImageRenderer: ObservableObject {
     
     private func reload() {
         reloadTextures(folderURL: ResourcesFolder.texturesFolderURL, prefix: ResourcesFolder.texturePrefix, extensions: ResourcesFolder.textureExtensions)
-        engine.reloadShader()
+        if let code = try? engine.reloadShader() {
+            self.code = code
+        }
         render()
     }
     
-    private var textures: [CGImage] = []
     private func reloadTextures(folderURL: URL, prefix: String, extensions: [String]) {
         func appendTexure(names: [String]) {
             for name in names {
@@ -114,4 +124,9 @@ class ImageRenderer: ObservableObject {
         }
     }
     
+    private func saveCode() {
+        if let data = code.data(using: .utf8) {
+            try? data.write(to: engine.shaderURL)
+        }
+    }
 }

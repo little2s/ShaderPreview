@@ -18,8 +18,8 @@ class Clock: ObservableObject {
 
     @Published var isPlaying = false
     
-    @Published var fpsString: String = "30 fps"
-    private(set) var fps: TimeInterval = 30.0 {
+    @Published var fpsString: String = "60 fps"
+    private(set) var fps: TimeInterval = 60.0 {
         didSet {
             fpsString = "\(Int(fps)) fps"
         }
@@ -61,6 +61,11 @@ class Clock: ObservableObject {
         } else {
             fps = 30
         }
+    }
+    
+    func reset() {
+        pause()
+        time = 0.0
     }
     
 }

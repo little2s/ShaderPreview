@@ -38,7 +38,10 @@ struct ContentView: View {
                 viewModel.toggleEngine()
             })
             Spacer()
-            PreviewView(nsImage: $viewModel.image)
+            HSplitView {
+                EditorView(text: $viewModel.code)
+                PreviewView(nsImage: $viewModel.image)
+            }
             Spacer()
             BottomBar(clock: $viewModel.clock, errorDescription: $viewModel.errorDescription, errorActionHandler: {
                 showsErrorLogView = true

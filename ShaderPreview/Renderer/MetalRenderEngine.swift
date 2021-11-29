@@ -17,7 +17,7 @@ class MetalRenderEngine: RenderEngine {
     private var kernel: MTIRenderPipelineKernel?
     
     private var requiredTexturesCount: Int?
-    func reloadShader() {
+    func reloadShader() throws -> String {
         func getTexturesCount(shaderString: String) -> Int? {
             guard let line = shaderString.components(separatedBy: "\n").first?.replacingOccurrences(of: "///", with: "") else {
                 return nil
@@ -32,14 +32,15 @@ class MetalRenderEngine: RenderEngine {
             return nil
         }
         
-        guard let shaderString = try? String(contentsOfFile: shaderURL.path, encoding: .utf8) else { return }
+        let shaderString = try String(contentsOfFile: shaderURL.path, encoding: .utf8)
         self.requiredTexturesCount = getTexturesCount(shaderString: shaderString)
         let libraryURL = MTILibrarySourceRegistration.shared.registerLibrary(source: shaderString, compileOptions: nil)
         self.kernel = MTIRenderPipelineKernel(vertexFunctionDescriptor: MTIFunctionDescriptor.passthroughVertex, fragmentFunctionDescriptor: MTIFunctionDescriptor(name: "playFragment", libraryURL: libraryURL))
+        return shaderString
     }
     
     func render(textures: [CGImage], time: TimeInterval) throws -> CGImage {
-        let inputImages = textures.map { MTIImage(cgImage: $0) }
+        let inputImages = textures.map { MTIImage(cgImage: $0, isOpaque: true) }
         guard let image = inputImages.first else {
             throw InstructionError("No Textures!")
         }
