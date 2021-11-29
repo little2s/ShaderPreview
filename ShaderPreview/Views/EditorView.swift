@@ -13,7 +13,7 @@ struct EditorView: View {
     
     var body: some View {
         TextEditor(text: $text)
-            .font(Font.body)
+            .font(Font(NSFont.monospacedSystemFont(ofSize: 14, weight: .regular)))
             .frame(minWidth: 100)
     }
 }

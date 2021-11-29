@@ -46,6 +46,7 @@ class ImageRenderer: ObservableObject {
     private var textures: [CGImage] = []
     
     @Published var code: String = ""
+    @Published var isEditorOn = true
                 
     private let fileMonitor = FileMonitor()
     

@@ -34,12 +34,18 @@ struct ContentView: View {
     
     private func mainView() -> some View {
         VStack(spacing: 0) {
-            TopBar(engineName: $viewModel.engineName, engineActionHandler: {
-                viewModel.toggleEngine()
-            })
+            TopBar(engineName: $viewModel.engineName,
+                   isEditorOn: $viewModel.isEditorOn,
+                   engineActionHandler: {
+                        viewModel.toggleEngine()
+                    }, editorActionHandler: {
+                        viewModel.isEditorOn.toggle()
+                    })
             Spacer()
             HSplitView {
-                EditorView(text: $viewModel.code)
+                if viewModel.isEditorOn {
+                    EditorView(text: $viewModel.code)
+                }
                 PreviewView(nsImage: $viewModel.image)
             }
             Spacer()

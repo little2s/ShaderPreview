@@ -9,11 +9,18 @@ import SwiftUI
 
 struct TopBar: View {
     @Binding var engineName: String
+    @Binding var isEditorOn: Bool
     
     let engineActionHandler: () -> Void
+    let editorActionHandler: () -> Void
     
     var body: some View {
         HStack() {
+            Button(isEditorOn ? "Editor On" : "Editor Off") {
+                editorActionHandler()
+            }
+                .buttonStyle(PlainButtonStyle())
+            
             Spacer()
             
             Button(engineName, action: engineActionHandler)
